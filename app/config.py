@@ -1,12 +1,13 @@
 import logging
-from pydantic import BaseSettings
+from pydantic import BaseSettings, AnyUrl
 
 log = logging.getLogger(__name__)
 
 
 class Settings(BaseSettings):
-    ENVIRONMENT: str = "dev"
-    TESTING: bool = False
+    ENVIRONMENT: str
+    TESTING: bool
+    DATABASE_URL: AnyUrl
 
 
 settings = Settings()
