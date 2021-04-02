@@ -1,9 +1,19 @@
 from fastapi import FastAPI, Depends
 from tortoise.contrib.fastapi import register_tortoise
 
-from app.config import settings
+from app.config import Settings, settings
 
 app = FastAPI()
+
+
+@app.get("/ping")
+async def pong():
+    return {
+        "ping": "pong!",
+        "environment": settings.ENVIRONMENT,
+        "testing": settings.TESTING
+    }
+
 
 register_tortoise(
     app,
