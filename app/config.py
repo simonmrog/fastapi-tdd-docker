@@ -1,5 +1,7 @@
 import logging
 from pydantic import BaseSettings, AnyUrl
+from functools import lru_cache
+
 
 log = logging.getLogger(__name__)
 
@@ -10,4 +12,7 @@ class Settings(BaseSettings):
     DATABASE_URL: AnyUrl
 
 
-settings = Settings()
+@lru_cache()
+def get_settings() -> BaseSettings:
+    log.info("Loading config settings from the environment...")
+    return Settings()

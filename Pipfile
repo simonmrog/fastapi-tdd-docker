@@ -8,6 +8,8 @@ fastapi = "*"
 uvicorn = "*"
 asyncpg = "*"
 tortoise-orm = "*"
+pytest = "*"
+requests = "*"
 
 [dev-packages]
 
